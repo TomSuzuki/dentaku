@@ -10,11 +10,23 @@
     <title>Dentaku</title>
     <link rel="manifest" href="./manifest.json">
     <link rel="shortcut icon" href="./assets/images/launcher-icon48.png">
-    <script type="text/javascript" src="./assets/js/service.js"></script>
     <script type="text/javascript" src="./assets/js/main.js"></script>
     <script type="text/javascript" src="./assets/js/mouse.js"></script>
     <script type="text/javascript" src="./assets/js/calc.js"></script>
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+
+    <script>
+        window.addEventListener('load', function () {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register("./serviceWorker.js")
+                    .then(function (registration) {
+                        console.log("serviceWorker registed.");
+                    }).catch(function (error) {
+                        console.warn("serviceWorker error.", error);
+                    });
+            }
+        });
+    </script>
 </head>
 
 <body>
